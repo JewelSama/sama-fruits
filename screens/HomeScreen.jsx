@@ -27,7 +27,7 @@ const HomeScreen = () => {
                 <Bars3CenterLeftIcon size={25} style={{fontWeight: 'bold'}} color="#de1f27" />
             </TouchableOpacity>
             <Text className="text-2xl text-center font-bold">Home</Text>
-            <TouchableOpacity className="bg-lightishPink p-1 rounded">
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')} className="bg-lightishPink p-1 rounded">
                 <Image 
                     source={avatar}
                     className="w-10 h-10"
