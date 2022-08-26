@@ -23,11 +23,11 @@ const HomeScreen = () => {
   return (
     <SafeAreaView className="p-4" style={GlobalStyles.droidSafeArea}>
       <View className="flex-row items-center space-x-20  justify-between">
-            <TouchableOpacity className="bg-lightishPink rounded p-2">
+            <TouchableOpacity className="bg-lightishPink rounded-lg p-2">
                 <Bars3CenterLeftIcon size={25} style={{fontWeight: 'bold'}} color="#de1f27" />
             </TouchableOpacity>
             <Text className="text-2xl text-center font-bold">Home</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')} className="bg-lightishPink p-1 rounded">
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')} className="bg-lightishPink p-1 rounded-lg">
                 <Image 
                     source={avatar}
                     className="w-10 h-10"
