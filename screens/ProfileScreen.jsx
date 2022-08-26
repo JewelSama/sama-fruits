@@ -52,41 +52,41 @@ const ProfileScreen = () => {
                 <Text className="text-gray-600 font-bold">Location</Text>
             </TouchableOpacity>
         </View>
-            <View className="flex flex-row h-16 p-2 space-x-3 items-center">
+            <TouchableOpacity className="flex flex-row h-16 p-2 space-x-3 items-center">
                 <View className="bg-slate-300  rounded-lg  p-1">
                     <UserIcon size={23} color="rgb(75, 85, 99)" />
                 </View>
                 <Text className="flex-1 text-lg font-semibold text-gray-600">User Details</Text>
                 <ChevronRightIcon size={24} color="rgb(75, 85, 99)" />
-            </View>
-            <View className="flex flex-row h-16 p-2 space-x-3 items-center">
+            </TouchableOpacity>
+            <TouchableOpacity className="flex flex-row h-16 p-2 space-x-3 items-center">
                 <View className="bg-slate-300  rounded-lg  p-1">
                     <Cog6ToothIcon size={23} color="rgb(75, 85, 99)" />
                 </View>
                 <Text className="flex-1 text-lg font-semibold text-gray-600">Settings</Text>
                 <ChevronRightIcon size={24} color="rgb(75, 85, 99)" />
-            </View>
-            <View className="flex flex-row h-16 p-2 space-x-3 items-center">
+            </TouchableOpacity>
+            <TouchableOpacity className="flex flex-row h-16 p-2 space-x-3 items-center">
                 <View className="bg-slate-300  rounded-lg  p-1">
                     <ChatBubbleOvalLeftEllipsisIcon size={23} color="rgb(75, 85, 99)" />
                 </View>
                 <Text className="flex-1 text-lg font-semibold text-gray-600">Help & Support</Text>
                 <ChevronRightIcon size={24} color="rgb(75, 85, 99)" />
-            </View>
-            <View className="flex flex-row h-16 p-2 space-x-3 items-center">
+            </TouchableOpacity>
+            <TouchableOpacity className="flex flex-row h-16 p-2 space-x-3 items-center">
                 <View className="bg-slate-300  rounded-lg  p-1">
                     <LanguageIcon size={23} color="rgb(75, 85, 99)" />
                 </View>
                 <Text className="flex-1 text-lg font-semibold text-gray-600">Language</Text>
                 <ChevronRightIcon size={24} color="rgb(75, 85, 99)" />
-            </View>
-            <View className="flex flex-row h-16 p-2 space-x-3 items-center">
+            </TouchableOpacity>
+            <TouchableOpacity className="flex flex-row h-16 p-2 space-x-3 items-center">
                 <View className="bg-slate-300  rounded-lg  p-1">
                     <ArrowRightOnRectangleIcon size={23} color="#000" />
                 </View>
                 <Text className="flex-1 text-lg font-semibold text-gray-600">Logout</Text>
                 <ChevronRightIcon size={24} color="rgb(75, 85, 99)" />
-            </View>
+            </TouchableOpacity>
             
     </SafeAreaView>
         </ScrollView>
