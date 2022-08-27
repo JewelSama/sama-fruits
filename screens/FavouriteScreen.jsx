@@ -6,7 +6,6 @@ import { Bars3CenterLeftIcon, PlusIcon, XMarkIcon, ShoppingBagIcon, MagnifyingGl
 import berry from '../assets/berry1.png'
 
 
-
 const FavouriteScreen = () => {
     const navigation = useNavigation()
   return (
@@ -17,7 +16,7 @@ const FavouriteScreen = () => {
                 <Bars3CenterLeftIcon size={25} style={{fontWeight: 'bold'}} color="#de1f27" />
             </TouchableOpacity>
             <Text className="text-xl text-center font-bold">Favourite Lists</Text>
-            <TouchableOpacity className="bg-lightishPink rounded-lg p-2">
+            <TouchableOpacity onPress={() => navigation.navigate('Cart')} className="bg-lightishPink rounded-lg p-2">
                 <ShoppingBagIcon size={25} style={{fontWeight: 'bold'}} color="#de1f27" />
             </TouchableOpacity>
       </View>
