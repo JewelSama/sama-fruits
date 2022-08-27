@@ -10,6 +10,7 @@ import {HomeIcon, BookmarkIcon, ShoppingBagIcon, BellAlertIcon} from 'react-nati
 import FavouriteScreen from './screens/FavouriteScreen';
 import CartScreen from './screens/CartScreen';
 import NotificationScreen from './screens/NotificationScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 
 export default function App() {
   const Tab = createBottomTabNavigator()
@@ -63,6 +64,7 @@ export default function App() {
     <NavigationContainer>
       <TailwindProvider>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="HomeT" component={HomeTabs} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
