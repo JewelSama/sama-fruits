@@ -35,7 +35,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
       </View>
       <Text className="text-xl mt-5  font-bold">Let's find best food here</Text>
-      <TouchableOpacity className="flex-row mt-2 bg-slate-200 p-3">
+      <TouchableOpacity className="flex-row rounded-md mt-2 bg-slate-200 p-3">
         <MagnifyingGlassIcon size={25} style={{fontWeight: 'bold'}} color="#ccc" />
         <Text className="ml-3 font-bold text-slate-400 mt-1">Search now...</Text>
       </TouchableOpacity>
