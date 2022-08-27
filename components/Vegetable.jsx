@@ -3,9 +3,15 @@ import React from 'react'
 import avatar from '../assets/broc1.png'
 import {BookmarkIcon as OutlinedBookmark} from 'react-native-heroicons/outline'
 import {BookmarkIcon as SolidBookmark, PlusIcon} from 'react-native-heroicons/solid'
+import { useNavigation } from '@react-navigation/native'
+
+
+
+
 const Vegetable = () => {
+    const navigation = useNavigation()
   return (
-        <TouchableOpacity className="h-48 w-36 mt-3 p-2 relative  bg-transparent  rounded-md border border-gray-400 ">
+        <TouchableOpacity onPress={() => navigation.navigate('ProductDetail')} className="h-48 w-36 mt-3 p-2 relative  bg-transparent  rounded-md border border-gray-400 ">
             <TouchableOpacity className="rounded p-2  items-center self-end  bg-lightishPink">
                 {/* <SolidBookmark size={20} color="#de1f27" /> */}
                 <OutlinedBookmark size={18} color="#fff" style={{fontWeight: 'bold'}} />
