@@ -18,7 +18,7 @@ const CartScreen = () => {
             </TouchableOpacity>
       </View>
     </SafeAreaView>
-    <ScrollView className="-mt-4 p-4" contentContainerStyle={{paddingBottom: 80}} showsVerticalScrollIndicator={false}>
+    <ScrollView className="mt-2 p-4" contentContainerStyle={{paddingBottom: 80}} showsVerticalScrollIndicator={false}>
     <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
       <Image source={berry} className="w-24 h-24"  />
       <View>
