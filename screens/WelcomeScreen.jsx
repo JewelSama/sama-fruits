@@ -1,11 +1,16 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, {useEffect} from 'react'
 import splash from '../assets/splash.png'
 import naru from '../assets/naru.png'
 import { useNavigation } from '@react-navigation/native'
 
 const WelcomeScreen = () => {
-    const navigation = useNavigation()
+  const navigation = useNavigation()
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('HomeT')
+    }, 4000)
+  }, [])
   return (
     <View>
       <View className="bg-red-200 items-center justify-center z-10 h-96 rounded-b-full">
