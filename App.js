@@ -11,6 +11,7 @@ import FavouriteScreen from './screens/FavouriteScreen';
 import CartScreen from './screens/CartScreen';
 import NotificationScreen from './screens/NotificationScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
+import ProductDetailsScreen from './screens/ProductDetailsScreen';
 
 export default function App() {
   const Tab = createBottomTabNavigator()
@@ -67,6 +68,7 @@ export default function App() {
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="HomeT" component={HomeTabs} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailsScreen} />
       </Stack.Navigator>
       </TailwindProvider>
     </NavigationContainer>
