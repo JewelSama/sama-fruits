@@ -1,5 +1,5 @@
 import { SafeAreaView, View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import React, {useLayoutEffect, useState} from 'react'
+import React, {useEffect, useLayoutEffect, useState} from 'react'
 import {useNavigation} from '@react-navigation/native'
 import GlobalStyles from '../GlobalStyles'
 import {Bars3CenterLeftIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline'
@@ -8,6 +8,7 @@ import Fruit from '../components/Fruit'
 import Vegetable from '../components/Vegetable'
 import FastFood from '../components/FastFood'
 import Bakery from '../components/Bakery'
+import sanityClient from '../sanity'
 
 
 const HomeScreen = () => {
@@ -20,7 +21,11 @@ const HomeScreen = () => {
         })
     ), [navigation])
 
-  return (
+
+
+
+
+    return (
     <SafeAreaView className="p-4" style={GlobalStyles.droidSafeArea}>
       <View className="flex-row items-center space-x-20  justify-between">
             <TouchableOpacity className="bg-lightishPink rounded-lg p-2">
@@ -79,7 +84,7 @@ const HomeScreen = () => {
     <View>
         {defaultTab === 0 && (
             <ScrollView>
-                <Fruit />
+                <Fruit  />
             </ScrollView>
         )}
         {defaultTab === 1 && (
