@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity} from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView} from 'react-native'
 import React, {useState, useEffect} from 'react'
 import avatar from '../assets/broc1.png'
 import {BookmarkIcon as OutlinedBookmark} from 'react-native-heroicons/outline'
@@ -29,14 +29,22 @@ const Vegetable = () => {
     }, [sanityClient])
 
   return (
-    <>
+        
+    <View className="flex flex-row flex-wrap justify-between">
     {vegetables.map(vege => (
-        <TouchableOpacity onPress={() => navigation.navigate('ProductDetail')} className="h-48 w-36 mt-3 p-2 relative  bg-transparent  rounded-md border border-gray-400 ">
-            <TouchableOpacity className="rounded p-2  items-center self-end  bg-lightishPink">
+        <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', {
+            id: vege?._id,
+            name:vege?.name,
+            img:vege?.image,
+            price:vege?.price,
+            rating:vege?.rating,
+            desc:vege?.short_description,
+        })} className="h-48 w-40 mt-3 p-2 relative  bg-transparent  rounded-md border border-gray-400 ">
+            <TouchableOpacity className="rounded p-2  items-center self-end  bg-red-300">
                 {/* <SolidBookmark size={20} color="#de1f27" /> */}
                 <OutlinedBookmark size={18} color="#fff" style={{fontWeight: 'bold'}} />
             </TouchableOpacity>
-            <Image source={{uri : urlFor(vege?.image).url()}} className="w-20 mt-8 absolute  self-center h-20" />
+            <Image source={{uri : urlFor(vege?.image).url()}} className="w-24 mt-8 absolute  self-center h-20" />
            <View className="flex mt-14">
             <Text className="text-md font-bold mt-3 text-md" >{vege?.name}</Text>
                 <Text className=" text-gray-400 text-xs font-bold">Fresh Vegetables</Text>
@@ -49,7 +57,8 @@ const Vegetable = () => {
             </View>
         </TouchableOpacity>
         ))}
-    </>
+    </View>
+         
   )
 }
 

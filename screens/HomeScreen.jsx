@@ -26,6 +26,7 @@ const HomeScreen = () => {
 
 
     return (
+    <>
     <SafeAreaView className="p-4" style={GlobalStyles.droidSafeArea}>
       <View className="flex-row items-center space-x-20  justify-between">
             <TouchableOpacity className="bg-lightishPink rounded-lg p-2">
@@ -80,31 +81,31 @@ const HomeScreen = () => {
             </View>)}
         </TouchableOpacity>
       </View>
-
-    <View>
+      </SafeAreaView>
+    <View className="px-4">
         {defaultTab === 0 && (
-            <ScrollView>
+            <ScrollView contentContainerStyle={{paddingBottom: 340}} showsVerticalScrollIndicator={false}>
                 <Fruit  />
             </ScrollView>
         )}
         {defaultTab === 1 && (
-            <ScrollView>
+            <ScrollView contentContainerStyle={{paddingBottom: 340}} showsVerticalScrollIndicator={false}>
                 <Vegetable />
-            </ScrollView>
+             </ScrollView>
         )}
         {defaultTab === 2 && (
-            <ScrollView>
+            <ScrollView contentContainerStyle={{paddingBottom: 340}} showsVerticalScrollIndicator={false}>
                 <Bakery />
             </ScrollView>
         )}
         {defaultTab === 3 && (
-            <ScrollView>
+            <ScrollView contentContainerStyle={{paddingBottom: 340}} showsVerticalScrollIndicator={false}>
             <FastFood />
             </ScrollView>
         )}
     </View>
-    </SafeAreaView>
     
+    </>
   )
 }
 
