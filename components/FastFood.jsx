@@ -1,6 +1,5 @@
-import { View, Text, Image, TouchableOpacity} from 'react-native'
+import { View, Text, Image, TouchableOpacity, ActivityIndicator} from 'react-native'
 import React, {useState, useEffect} from 'react'
-import avatar from '../assets/fast1.png'
 import {BookmarkIcon as OutlinedBookmark} from 'react-native-heroicons/outline'
 import {BookmarkIcon as SolidBookmark, PlusIcon} from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'
@@ -10,6 +9,7 @@ import sanityClient from '../sanity'
 const FastFood = () => {
     const navigation = useNavigation()
     const [fastFoods, setFastFoods] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     
     useEffect(() => {
@@ -22,13 +22,16 @@ const FastFood = () => {
         `).then((data) => {
             setFastFoods(data?.dishes)
             // console.log(fastFoods);
+            setIsLoading(false)
         })
         
     }, [sanityClient])
-  return (
+  return isLoading ? (
+    <ActivityIndicator size="large" color="#de1f27" />
+  ) :(
     <View className="flex flex-row flex-wrap justify-between">
     {fastFoods?.map(fFood => (
-        <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', {
+        <TouchableOpacity key={fFood?._id} onPress={() => navigation.navigate('ProductDetail', {
             id: fFood?.id,
             img: fFood?.image,
             name: fFood?.name,

@@ -1,6 +1,5 @@
-import { View, Text, Image, TouchableOpacity} from 'react-native'
+import { View, Text, Image, TouchableOpacity, ActivityIndicator} from 'react-native'
 import React, {useState, useEffect} from 'react'
-import avatar from '../assets/donut1.png'
 import {BookmarkIcon as OutlinedBookmark} from 'react-native-heroicons/outline'
 import {BookmarkIcon as SolidBookmark, PlusIcon} from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'
@@ -10,6 +9,7 @@ import sanityClient from '../sanity'
 const Bakery = () => {
     const navigation = useNavigation()
     const [bakery, setBakery] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         sanityClient.fetch(`
@@ -20,17 +20,20 @@ const Bakery = () => {
           }[2]
         `).then((data) => {
             setBakery(data?.dishes)
+            setIsLoading(false)
         })
         
     }, [sanityClient])
 
 
-  return (
+  return isLoading ? (
+    <ActivityIndicator size="large" color="#de1f27" />
+  ) : (
   <View className="flex flex-row flex-wrap justify-between">
     {bakery?.map(bake => (
 
     
-        <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', {
+        <TouchableOpacity key={bake?._id} onPress={() => navigation.navigate('ProductDetail', {
             id: bake?._id,
             name:bake?.name,
             img:bake?.image,

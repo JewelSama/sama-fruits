@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, ScrollView} from 'react-native'
+import { View, Text, Image, TouchableOpacity, ActivityIndicator} from 'react-native'
 import React, {useState, useEffect} from 'react'
 import avatar from '../assets/berry1.png'
 import {BookmarkIcon as OutlinedBookmark} from 'react-native-heroicons/outline'
@@ -9,6 +9,7 @@ import { urlFor } from '../sanity'
 
 const Fruit = () => {
     const [fruits, setFruits] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const navigation = useNavigation()
 
 
@@ -21,16 +22,19 @@ const Fruit = () => {
           }[3]
         `).then((data) => {
             setFruits(data?.dishes)
+            setIsLoading(false)
         })
         
     }, [sanityClient])
     
     // console.log(fruits);
-  return (
+  return isLoading ? (
+    <ActivityIndicator size="large" color="#de1f27" />
+  ) : (
     <View className="flex flex-row flex-wrap justify-between">
      {fruits?.map(fruit => (
      
-        <TouchableOpacity onPress={() => navigation.navigate('ProductDetail', {
+        <TouchableOpacity key={fruit?._id} onPress={() => navigation.navigate('ProductDetail', {
             id: fruit?._id,
             name:fruit?.name,
             img:fruit?.image,
