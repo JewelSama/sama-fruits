@@ -8,7 +8,7 @@ import berry from '../assets/berry1.png'
 import AddToCart from '../components/AddToCart'
 import { urlFor } from '../sanity'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart, selectCartItemsWithId } from '../faetures/cartSlice'
+import { addToCart, removeFromCart, selectCartItemsWithId, selectCartItems, selectCartTotal } from '../faetures/cartSlice'
 
 
 
@@ -16,6 +16,8 @@ import { addToCart, removeFromCart, selectCartItemsWithId } from '../faetures/ca
 const ProductDetailsScreen = ({route}) => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
+    const cartItems = useSelector(selectCartItems)
+    const cartTotal = useSelector(selectCartTotal)
 
 
     const {
@@ -41,7 +43,7 @@ const ProductDetailsScreen = ({route}) => {
     // console.log(items)
   return (
     <>
-        <AddToCart />
+        <AddToCart cartItems={cartItems} cartTotal={cartTotal} />
         <SafeAreaView className="p-5 bg-lightishPink  self-center h-80 w-96" style={GlobalStyles.droidSafeArea}>
             <View className="flex-row mt-4  items-center space-x-10  justify-between">
                 <TouchableOpacity onPress={() => navigation.goBack()} className="bg-red-200 rounded-lg p-2">

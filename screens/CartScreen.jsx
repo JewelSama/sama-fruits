@@ -1,10 +1,33 @@
 import { View, SafeAreaView, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import GlobalStyles from '../GlobalStyles'
 import {MagnifyingGlassIcon, PlusIcon, MinusIcon, XMarkIcon, Bars3CenterLeftIcon} from 'react-native-heroicons/outline'
 import berry from '../assets/berry1.png'
+import { selectCartItems, selectCartTotal } from '../faetures/cartSlice'
+import { useDispatch, useSelector  } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+
+
 
 const CartScreen = () => {
+  const dispatch = useDispatch()
+  const navigation = useNavigation()
+  const items = useSelector(selectCartItems)
+  const basketTotal = useSelector(selectCartTotal)
+  const [groupedItemsInCart, setGroupedItemsInCart] = useState([])
+
+
+  useEffect(() => {
+    const groupedItems = items.reduce((results, item) => {
+      (results[item.id] = results[item.id] || []).push(item)
+      return results;
+    }, {})
+    setGroupedItemsInCart(groupedItems)
+  }, [items])
+  console.log(groupedItemsInCart)
+  
+
+
   return (
     <>
     <SafeAreaView className="p-5" style={GlobalStyles.droidSafeArea}>
