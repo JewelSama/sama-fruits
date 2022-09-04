@@ -12,6 +12,8 @@ import CartScreen from './screens/CartScreen';
 import NotificationScreen from './screens/NotificationScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import ProductDetailsScreen from './screens/ProductDetailsScreen';
+import {store} from './store'
+import { Provider } from 'react-redux';
 
 export default function App() {
   const Tab = createBottomTabNavigator()
@@ -63,6 +65,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <Provider store={store}>
       <TailwindProvider>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
@@ -71,6 +74,7 @@ export default function App() {
           <Stack.Screen name="ProductDetail" component={ProductDetailsScreen} />
       </Stack.Navigator>
       </TailwindProvider>
+      </Provider>
     </NavigationContainer>
   );
 }

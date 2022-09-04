@@ -7,17 +7,38 @@ import { useNavigation, useParams } from '@react-navigation/native'
 import berry from '../assets/berry1.png'
 import AddToCart from '../components/AddToCart'
 import { urlFor } from '../sanity'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart, removeFromCart, selectCartItemsWithId } from '../faetures/cartSlice'
+
+
+
 
 const ProductDetailsScreen = ({route}) => {
     const navigation = useNavigation()
+    const dispatch = useDispatch()
+
 
     const {
+        id,
         name,
         img,
         price,
         rating,
         desc,
     } = route.params; 
+    const items = useSelector((state) => selectCartItemsWithId(state, id))
+    // console.log(route.params)
+
+    const addItemToCart = () => {
+        dispatch(addToCart({id, name, desc, price, img}))
+    }
+    const removeItemFromCart = () => {
+        if(!items.length > 0) return;
+        dispatch(removeFromCart({id}))
+    }
+
+    
+    // console.log(items)
   return (
     <>
         <AddToCart />
@@ -37,11 +58,11 @@ const ProductDetailsScreen = ({route}) => {
         </SafeAreaView>
     <ScrollView  className="mt-2"  contentContainerStyle={{paddingBottom: 120}} showsVerticalScrollIndicator={false}>
         <View className="flex flex-row items-center justify-center mt-7 space-x-3">
-            <TouchableOpacity className="bg-gray-400 items-center p-2 rounded-md">
+            <TouchableOpacity onPress={removeItemFromCart} className="bg-gray-400 items-center p-2 rounded-md">
               <MinusIcon size={16} color="#fff" />
             </TouchableOpacity>
-            <Text className="font-bold">1 kg</Text>
-            <TouchableOpacity className="bg-darkRed items-center p-2 rounded-md">
+            <Text className="font-bold">{items.length} kg</Text>
+            <TouchableOpacity className="bg-darkRed items-center p-2 rounded-md" onPress={addItemToCart}>
               <PlusIcon size={16} color="#fff" />
             </TouchableOpacity>
         </View>    

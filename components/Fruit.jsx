@@ -7,10 +7,13 @@ import { useNavigation } from '@react-navigation/native'
 import sanityClient from '../sanity'
 import { urlFor } from '../sanity'
 
+
+
 const Fruit = () => {
     const [fruits, setFruits] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const navigation = useNavigation()
+    
 
 
     useEffect(() => {
