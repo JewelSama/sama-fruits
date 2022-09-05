@@ -1,19 +1,19 @@
 import { View, SafeAreaView, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import GlobalStyles from '../GlobalStyles'
-import {MagnifyingGlassIcon, PlusIcon, MinusIcon, XMarkIcon, Bars3CenterLeftIcon} from 'react-native-heroicons/outline'
+import {MagnifyingGlassIcon, PlusIcon, MinusIcon, Bars3CenterLeftIcon} from 'react-native-heroicons/outline'
 import berry from '../assets/berry1.png'
-import { selectCartItems, selectCartTotal } from '../faetures/cartSlice'
+import { selectCartItems, selectCartTotal, selectCartItemsWithId, removeFromCart, addToCart } from '../faetures/cartSlice'
 import { useDispatch, useSelector  } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-
+import { urlFor } from '../sanity'
 
 
 const CartScreen = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const items = useSelector(selectCartItems)
-  const basketTotal = useSelector(selectCartTotal)
+  const cartTotal = useSelector(selectCartTotal)
   const [groupedItemsInCart, setGroupedItemsInCart] = useState([])
 
 
@@ -24,8 +24,17 @@ const CartScreen = () => {
     }, {})
     setGroupedItemsInCart(groupedItems)
   }, [items])
-  console.log(groupedItemsInCart)
+  // console.log(groupedItemsInCart)
+
+//   const cartItems = useSelector((state) => selectCartItemsWithId(state, id))
   
+//   const addItemToCart = () => {
+//     dispatch(addToCart({id, name, desc, price, img}))
+// }
+// const removeItemFromCart = () => {
+//     if(!items.length > 0) return;
+//     dispatch(removeFromCart({id}))
+// }
 
 
   return (
@@ -42,120 +51,28 @@ const CartScreen = () => {
       </View>
     </SafeAreaView>
     <ScrollView className="mt-2 p-4" contentContainerStyle={{paddingBottom: 80}} showsVerticalScrollIndicator={false}>
-    <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
-      <Image source={berry} className="w-24 h-24"  />
-      <View>
-      <Text className="text-xl font-bold">Strawberry</Text>
-      <Text className="text-gray-400 text-md font-bold">3Kg</Text>
-      <Text className="text-lg font-bold">₦800</Text>
+      {Object.entries(groupedItemsInCart).map(([key, items]) => 
+    <View key={key} className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
+      <Image source={{ uri: urlFor(items[0]?.img).url()}} className="w-24 h-24" />
+      <View className="items-center">
+      <Text className="text-xl font-bold">{items[0]?.name}</Text>
+      <Text className="text-gray-400 text-md font-bold">{items.length}Qty</Text>
+      <Text className="text-lg font-bold">₦{items[0]?.price}</Text>
       </View>
       {/* icons */}
       <View className="space-y-4 p-2 -mt-2 -mr-2  right-0 rounded-lg items-center bg-lightishPink h-24">
         <TouchableOpacity>
           <PlusIcon size={20} color="#de1f27" />
         </TouchableOpacity>
-        <Text className="font-bold">3</Text>
-        <TouchableOpacity >
-          <MinusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-      </View>
-      
-    </View>
-    <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
-      <Image source={berry} className="w-24 h-24"  />
-      <View>
-      <Text className="text-xl font-bold">Strawberry</Text>
-      <Text className="text-gray-400 text-md font-bold">3Kg</Text>
-      <Text className="text-lg font-bold">₦800</Text>
-      </View>
-      {/* icons */}
-      <View className="space-y-4 p-2 -mt-2 -mr-2  right-0 rounded-lg items-center bg-lightishPink h-24">
+        <Text className="font-bold">{items.length}</Text>
         <TouchableOpacity>
-          <PlusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-        <Text className="font-bold">3</Text>
-        <TouchableOpacity >
           <MinusIcon size={20} color="#de1f27" />
         </TouchableOpacity>
       </View>
       
     </View>
-    <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
-      <Image source={berry} className="w-24 h-24"  />
-      <View>
-      <Text className="text-xl font-bold">Strawberry</Text>
-      <Text className="text-gray-400 text-md font-bold">3Kg</Text>
-      <Text className="text-lg font-bold">₦800</Text>
-      </View>
-      {/* icons */}
-      <View className="space-y-4 p-2 -mt-2 -mr-2  right-0 rounded-lg items-center bg-lightishPink h-24">
-        <TouchableOpacity>
-          <PlusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-        <Text className="font-bold">3</Text>
-        <TouchableOpacity >
-          <MinusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-      </View>
-      
-    </View>
-    <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
-      <Image source={berry} className="w-24 h-24"  />
-      <View>
-      <Text className="text-xl font-bold">Strawberry</Text>
-      <Text className="text-gray-400 text-md font-bold">3Kg</Text>
-      <Text className="text-lg font-bold">₦800</Text>
-      </View>
-      {/* icons */}
-      <View className="space-y-4 p-2 -mt-2 -mr-2  right-0 rounded-lg items-center bg-lightishPink h-24">
-        <TouchableOpacity>
-          <PlusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-        <Text className="font-bold">3</Text>
-        <TouchableOpacity >
-          <MinusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-      </View>
-      
-    </View>
-    <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
-      <Image source={berry} className="w-24 h-24"  />
-      <View>
-      <Text className="text-xl font-bold">Strawberry</Text>
-      <Text className="text-gray-400 text-md font-bold">3Kg</Text>
-      <Text className="text-lg font-bold">₦800</Text>
-      </View>
-      {/* icons */}
-      <View className="space-y-4 p-2 -mt-2 -mr-2  right-0 rounded-lg items-center bg-lightishPink h-24">
-        <TouchableOpacity>
-          <PlusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-        <Text className="font-bold">3</Text>
-        <TouchableOpacity >
-          <MinusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-      </View>
-      
-    </View>
-    <View className="flex  flex-row rounded-lg border justify-between p-4 h-28 border-gray-400 mb-5">
-      <Image source={berry} className="w-24 h-24"  />
-      <View>
-      <Text className="text-xl font-bold">Strawberry</Text>
-      <Text className="text-gray-400 text-md font-bold">3Kg</Text>
-      <Text className="text-lg font-bold">₦800</Text>
-      </View>
-      {/* icons */}
-      <View className="space-y-4 p-2 -mt-2 -mr-2  right-0 rounded-lg items-center bg-lightishPink h-24">
-        <TouchableOpacity>
-          <PlusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-        <Text className="font-bold">3</Text>
-        <TouchableOpacity >
-          <MinusIcon size={20} color="#de1f27" />
-        </TouchableOpacity>
-      </View>
-      
-    </View>
+    )}
+    
 
     
     </ScrollView>
