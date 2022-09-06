@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, Image } from 'react-native'
 import React, {useEffect} from 'react'
 import GlobalStyles from '../GlobalStyles'
 import deliveryLoading from '../assets/deliveryLoading.gif'
@@ -16,19 +16,16 @@ const PreparingOrderScreen = () => {
     }, [])
   return (
     <SafeAreaView className="bg-[#00ccbb] flex-1 justify-center items-center" style={GlobalStyles.droidSafeArea}>
-      <Animatable.Image 
+      <Image 
         source={deliveryLoading}
-        animation="slideInUp"
-        iterationCount={1}
+        
         className="h-96 w-96 my-10"
       />
-      <Animatable.Text
-        animation="slideInUp"
-        iterationCount={1}
+      <Text
         className="text-lg text-white font-bold text-center"
       >
         Waiting for Restaurant tom accept your order!
-      </Animatable.Text>
+      </Text>
       <Progress.Circle size={60} indeterminate={true} color="white" />
     </SafeAreaView>
   )
