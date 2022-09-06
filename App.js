@@ -14,6 +14,8 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import ProductDetailsScreen from './screens/ProductDetailsScreen';
 import {store} from './store'
 import { Provider } from 'react-redux';
+import PreparingOrderScreen from './screens/PreparingOrderScreen';
+import DeliveryScreen from './screens/DeliveryScreen';
 
 export default function App() {
   const Tab = createBottomTabNavigator()
@@ -72,6 +74,8 @@ export default function App() {
         <Stack.Screen name="HomeT" component={HomeTabs} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="ProductDetail" component={ProductDetailsScreen} />
+          <Stack.Screen name="PreparingOrderScreen" component={PreparingOrderScreen} />
+          <Stack.Screen name="Delivery" component={DeliveryScreen} />
       </Stack.Navigator>
       </TailwindProvider>
       </Provider>
