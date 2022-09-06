@@ -74,7 +74,9 @@ const CartScreen = () => {
     )}
     
 
-    
+    <TouchableOpacity onPress={() => navigation.navigate("PreparingOrderScreen")} className="rounded-lg bg-darkRed p-4">
+            <Text className="text-center text-white text-lg font-bold">Place Order</Text>
+          </TouchableOpacity>
     </ScrollView>
     </>
   )
